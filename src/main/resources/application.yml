@@ -1,1 +1,5 @@
+spring:
+  port: 0 # port의 값을 0으로 설정하면 사용하고 있지 않는 포트들을 찾아서 랜덤으로 포트를 설정한다.
+#  main:
+#    web-application-type: none # 이렇게 세팅하면 springboot에서 webapplication을 사용하지 않는다.
 

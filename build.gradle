@@ -26,7 +26,10 @@ dependencies {
 //	implementation 'org.springframework.boot:spring-boot-starter-data-mongodb'
 //	implementation 'org.springframework.boot:spring-boot-starter-data-redis'
 	implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
-	implementation 'org.springframework.boot:spring-boot-starter-web'
+	implementation ('org.springframework.boot:spring-boot-starter-web') {
+		exclude module: "spring-boot-starter-tomcat" // spring-boot에 내장 톰켓 제거
+	}
+	implementation 'org.springframework.boot:spring-boot-starter-undertow' // spring-boot에 내장 톰켓 대신 undertow 설치
 	implementation group: 'org.modelmapper', name: 'modelmapper', version: '3.0.0'
 	compileOnly 'org.projectlombok:lombok'
 	annotationProcessor 'org.projectlombok:lombok'
