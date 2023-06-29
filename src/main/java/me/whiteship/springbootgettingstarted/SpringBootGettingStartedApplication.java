@@ -3,14 +3,21 @@ package me.whiteship.springbootgettingstarted;
 //import org.apache.catalina.Context;
 //import org.apache.catalina.LifecycleException;
 //import org.apache.catalina.startup.Tomcat;
+import com.sun.jdi.connect.Transport;
+import org.apache.catalina.connector.Connector;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.SpringBootConfiguration;
 import org.springframework.boot.WebApplicationType;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.web.embedded.tomcat.TomcatServletWebServerFactory;
+import org.springframework.boot.web.servlet.server.ServletWebServerFactory;
+import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.stereotype.Component;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RestController;
 import org.thymeleaf.context.IContext;
 
 import javax.servlet.ServletException;
@@ -19,6 +26,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.Map;
 
 //@SpringBootApplication // @SpringBootApplication 안에는 @ComponentScan 와 @EnableAutoConfiguration가 있다.
 
@@ -68,9 +76,37 @@ import java.io.PrintWriter;
 //}
 
 
+//@SpringBootApplication
+//public class SpringBootGettingStartedApplication { // undertow를 사용하기 위함
+//	public static void main(String[] args) {
+//		SpringApplication.run(SpringBootGettingStartedApplication.class, args);
+//	}
+//}
+
 @SpringBootApplication
-public class SpringBootGettingStartedApplication { // undertow를 사용하기 위함
+@RestController
+public class SpringBootGettingStartedApplication { // 여기는 gradle 설정을 tomcat으로 해야한다.
+	@GetMapping("/hello")
+	public String hello() {
+		return "Hello Spring";
+	}
+
 	public static void main(String[] args) {
 		SpringApplication.run(SpringBootGettingStartedApplication.class, args);
 	}
+
+//	@Bean
+//	public ServletWebServerFactory serverFactory() {
+//		TomcatServletWebServerFactory tomcat = new TomcatServletWebServerFactory(); // 원래는 톰켓에 connector는 하나라서 http하나만 쓰든 https하나만 쓸 수 있다.
+//		tomcat.addAdditionalTomcatConnectors(createStandardConnector()); // 하지만 이렇게 connector를 추가하면 http와 https를 둘다 쓸수 있다.
+//		return tomcat;
+//	}
+//
+//	private Connector createStandardConnector() {
+//		Connector connector = new Connector("org.apache.coyote.http11.Http11NioProtocol"); // http1.1의 커넥터를 생성한다.
+//		connector.setPort(8080); // http1.1의 커넥터를 8080포트에 연결한다.
+//		return connector;
+//	}
+
+
 }

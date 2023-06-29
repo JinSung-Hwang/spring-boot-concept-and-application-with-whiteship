@@ -1,5 +1,13 @@
-spring:
-  port: 0 # port의 값을 0으로 설정하면 사용하고 있지 않는 포트들을 찾아서 랜덤으로 포트를 설정한다.
+#spring:
+#  port: 0 # port의 값을 0으로 설정하면 사용하고 있지 않는 포트들을 찾아서 랜덤으로 포트를 설정한다.
 #  main:
 #    web-application-type: none # 이렇게 세팅하면 springboot에서 webapplication을 사용하지 않는다.
-
+server:
+  ssl:
+    key-alias: spring
+    key-store: keystore.p12
+    key-store-type: PKCS12
+    key-store-password: 123456
+  port: 8443
+  http2: # http2설정은 undertow로 설정해야 편하다. 아니면 tomcat9이상이여야한다. tomcat8이하로는 이렇게 설정하지 않고 따로 설정해야할 것이 많다.
+    enabled: true
