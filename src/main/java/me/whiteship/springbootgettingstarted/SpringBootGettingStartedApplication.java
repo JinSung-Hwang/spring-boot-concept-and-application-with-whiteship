@@ -3,30 +3,31 @@ package me.whiteship.springbootgettingstarted;
 //import org.apache.catalina.Context;
 //import org.apache.catalina.LifecycleException;
 //import org.apache.catalina.startup.Tomcat;
-import com.sun.jdi.connect.Transport;
-import org.apache.catalina.connector.Connector;
+//import com.sun.jdi.connect.Transport;
+//import org.apache.catalina.connector.Connector;
+//import org.springframework.boot.Banner;
 import org.springframework.boot.SpringApplication;
-import org.springframework.boot.SpringBootConfiguration;
-import org.springframework.boot.WebApplicationType;
-import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
+//import org.springframework.boot.SpringBootConfiguration;
+//import org.springframework.boot.WebApplicationType;
+//import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.boot.web.embedded.tomcat.TomcatServletWebServerFactory;
-import org.springframework.boot.web.servlet.server.ServletWebServerFactory;
-import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.ComponentScan;
-import org.springframework.context.annotation.Configuration;
-import org.springframework.stereotype.Component;
+//import org.springframework.boot.web.embedded.tomcat.TomcatServletWebServerFactory;
+//import org.springframework.boot.web.servlet.server.ServletWebServerFactory;
+//import org.springframework.context.annotation.Bean;
+//import org.springframework.context.annotation.ComponentScan;
+//import org.springframework.context.annotation.Configuration;
+//import org.springframework.stereotype.Component;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
-import org.thymeleaf.context.IContext;
+//import org.thymeleaf.context.IContext;
 
-import javax.servlet.ServletException;
-import javax.servlet.http.HttpServlet;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import java.io.IOException;
-import java.io.PrintWriter;
-import java.util.Map;
+//import javax.servlet.ServletException;
+//import javax.servlet.http.HttpServlet;
+//import javax.servlet.http.HttpServletRequest;
+//import javax.servlet.http.HttpServletResponse;
+//import java.io.IOException;
+//import java.io.PrintWriter;
+//import java.util.Map;
 
 //@SpringBootApplication // @SpringBootApplication 안에는 @ComponentScan 와 @EnableAutoConfiguration가 있다.
 
@@ -92,7 +93,14 @@ public class SpringBootGettingStartedApplication { // 여기는 gradle 설정을
 	}
 
 	public static void main(String[] args) {
-		SpringApplication.run(SpringBootGettingStartedApplication.class, args);
+//		SpringApplication.run(SpringBootGettingStartedApplication.class, args); // 이렇게해도 스프링이 바로 실행 가능하지만 이렇게하면 spring을 커스텀하게 설정할 수 없다.
+
+		SpringApplication app = new SpringApplication(SpringBootGettingStartedApplication.class);
+//		app.setBannerMode(Banner.Mode.OFF);
+		app.run(args);
+
+
+
 	}
 
 //	@Bean
